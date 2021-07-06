@@ -1,6 +1,6 @@
 library(tidyverse)
 library(tidytext)
-# library(tidymodels)
+library(tidymodels)
 
 # install.packages("infer")
 # install.packages("tidymodels")
@@ -15,20 +15,11 @@ test_df <- read_csv("dacon_news_r/test_data.csv")
 train_df <- train_df %>% 
   left_join(topic_dic)
 
-train_df
-
-test_df %>% 
-  unnest_tokens( word, title, "words") %>% 
-  filter(str_detect(word, "[가-힣]")) %>%
-  count(word, sort = TRUE) %>% 
-  filter(nchar(word) != 1)
-
-dfdf %>% 
-  count(topic)
-
-df_1 <- dfdf %>% 
+df_1 <- train_df %>% 
   unnest_tokens( word, title, "words") # output, input, token
 
+
+df_1
 
 dfdf %>% 
   filter(index == "712")
